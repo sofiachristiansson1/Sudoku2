@@ -15,6 +15,7 @@ public class OneNumberTextField extends TextField {
 		}
 	}
 	
+	
 	@Override
 	public void replaceSelection(String number) {
 		if (matches(number)) {
