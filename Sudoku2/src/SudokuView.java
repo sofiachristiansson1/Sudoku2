@@ -26,16 +26,28 @@ public class SudokuView extends Application {
 		background.setPrefColumns(9);
 		background.setMaxWidth(lenght-50);
 		
-		OneNumberTextField[] textfields = new OneNumberTextField[81];
+		OneNumberTextField[][] textfields = new OneNumberTextField[9][9];
 		
-		for(int i=0;i<81;i++){
-			textfields[i]= new OneNumberTextField();
-			textfields[i].setPrefHeight(height/10);
-			textfields[i].setPrefWidth(lenght/10);
+		
+		for(int i=0;i<9;i++){
+			for(int p=0;p<9;p++){
+			textfields[i][p]= new OneNumberTextField();
+			textfields[i][p].setPrefHeight(height/10);
+			textfields[i][p].setPrefWidth(lenght/10);
+			
+			if((i==0 || i==1 || i==2 || i==6 || i==7 || i==8) && (p==0 || p==1 || p==2 || p==6 || p==7 || p==8)){
+			textfields[i][p].setStyle("-fx-control-inner-background: blue");
+			}
+			if((i==3 ||i==4 ||i==5) && (p==3 || p==4 || p==5 )){
+				textfields[i][p].setStyle("-fx-control-inner-background: blue");
+			}
+			
+		}}
+		
+		for(int n=0;n<9;n++){
+			for(int m=0;m<9;m++){
+			background.getChildren().add(textfields[n][m]);
 		}
-		
-		for(int n=0;n<81;n++){
-			background.getChildren().add(textfields[n]);
 		}
 		
 		
