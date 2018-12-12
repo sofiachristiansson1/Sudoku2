@@ -63,12 +63,16 @@ public class Sudoku {
 	}
 
 	private boolean helpSolve(int i, int j) {
-		if(i == 8 && j == 8){
-			return true;
-		}else if (board[i][j] == 0) {
+		//if(i==8 && j == 8){
+			//return true;
+		//}
+		if (board[i][j] == 0) {
 			for(int n=1;n<=9;n++){
 				if(isAllowed(n,i,j)==true){
 					board[i][j]=n;
+					if(i==8 && j == 8){
+						return true;
+					}
 					if(j < 8){
 						if(helpSolve(i, j + 1)==true){
 						return true;
@@ -78,7 +82,6 @@ public class Sudoku {
 						return true;
 						}
 					}
-				
 				}
 				
 			}
@@ -89,6 +92,8 @@ public class Sudoku {
 			if(isAllowed(board[i][j], i ,j)){
 		
 				if(i == 8 && j == 8){
+					i++;
+					j++;
 				return true;
 			}
 				if(j < 8){
@@ -104,8 +109,8 @@ public class Sudoku {
 		}
 		}
 		return false;
-		
-	}
+		}
+	
 
 	
 	/**

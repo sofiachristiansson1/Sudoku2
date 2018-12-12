@@ -79,16 +79,16 @@ public class TestSudoku {
 	@Test
 	public void testsolveFalseRow() {
 		s.insertNumber(1, 1, 1);
-		s.insertNumber(1, 2, 1);
-		assertFalse("Could find solution of unsolve(0,0)ble sudoku", s.solve(0,0) );
+		s.insertNumber(1, 1, 2);
+		assertFalse("Could find solution of unsolveble sudoku", s.solve(0,0) );
 		
 	}
 	
 	@Test
 	public void testsolveFalseColumn() {
-		s.insertNumber(1, 1, 3);
-		s.insertNumber(1, 1, 8);
-		assertFalse("Could find solution of unsolve(0,0)ble sudoku", s.solve(0,0) );
+		s.insertNumber(1, 1, 1);
+		s.insertNumber(1, 2, 1);
+		assertFalse("Could find solution of unsolveble sudoku", s.solve(0,0) );
 
 	}
 	
@@ -96,7 +96,7 @@ public class TestSudoku {
 	public void testsolveFalseRegion() {
 		s.insertNumber(1, 1, 1);
 		s.insertNumber(1, 2, 2);
-		assertFalse("Could find solution of unsolve(0,0)ble sudoku", s.solve(0,0) );
+		assertFalse("Could find solution of unsolveble sudoku", s.solve(0,0) );
 		
 	}
 }
