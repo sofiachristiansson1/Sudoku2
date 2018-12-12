@@ -34,6 +34,7 @@ public class SudokuView extends Application {
 			textfields[i][p]= new OneNumberTextField();
 			textfields[i][p].setPrefHeight(height/10);
 			textfields[i][p].setPrefWidth(lenght/10);
+			//textfields[i][p].setText("0");
 			
 			if((i==0 || i==1 || i==2 || i==6 || i==7 || i==8) && (p==0 || p==1 || p==2 || p==6 || p==7 || p==8)){
 			textfields[i][p].setStyle("-fx-control-inner-background: blue");
