@@ -94,6 +94,7 @@ public class SudokuView extends Application {
 			}else {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setHeaderText("Det här sudokut är ej lösbart");
+				sudoku.clear();
 				alert.showAndWait();
 			}
 			
