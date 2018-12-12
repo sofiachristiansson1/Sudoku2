@@ -1,5 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -50,10 +52,7 @@ public class SudokuView extends Application {
 			background.getChildren().add(textfields[n][m]);
 		}
 		}
-		
-		
-		
-		
+
 		
 		HBox hbox= new HBox();
 		hbox.setSpacing(10);
@@ -71,6 +70,45 @@ public class SudokuView extends Application {
 		
 		root.setCenter(background);
 		root.setBottom(hbox);
+		
+		Sudoku sudoku = new Sudoku();
+		
+		solve.setOnAction(event -> { //då solve trycks gås alla textfield igenom och värdet i textfield läggs till i board
+			for(int n=0;n<9;n++){
+				for(int m=0;m<9;m++){
+					if(textfields[n][m].getText().isEmpty()){
+						sudoku.insertNumber(0, n, m);
+					}else{
+						int a = Integer.valueOf(textfields[n][m].getText());
+						sudoku.insertNumber(a, n, m);
+					}
+				}
+			}
+			if(sudoku.solve(0, 0)){ //om lösbart så skrivs värdet i rutan från bord in i motsvarande textfield
+				for(int n=0;n<9;n++){
+					for(int m=0;m<9;m++){
+						textfields[n][m].setText(String.valueOf(sudoku.getNumber(n, m)));
+						
+					}
+				}
+			}else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setHeaderText("Det här sudokut är ej lösbart");
+				alert.showAndWait();
+			}
+			
+		});
+		
+		
+		clear.setOnAction(event -> {
+			sudoku.clear();
+			for(int n=0;n<9;n++){
+				for(int m=0;m<9;m++){
+					textfields[n][m].setText("");
+					
+				}
+			}
+		});
 
 	}
 	public static void main(String[] args) {

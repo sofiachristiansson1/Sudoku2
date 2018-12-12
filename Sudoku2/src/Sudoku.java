@@ -9,28 +9,29 @@ public class Sudoku {
 	}
 	
 	/**
-	 * Control if a is of the type Integer. if yes,control if the number is between 1 and 9.
+	 * control if the number is between 1 and 9.
 	 * If yes, add a at position i,j in the sudoku.
 	 * @throws IllegalArgumentException if it was not possible to add a.
-	 * @param a object that is controlled to be number and than are added to the sudoku.
+	 * @param a integer that is controlled to be 1-9 and than are added to the sudoku.
 	 */
-	public void insertNumber(Object a, int i, int j) {
+	public void insertNumber(int a, int i, int j) {
 
-		if(a instanceof Integer){
-			int number= ((Integer) a).intValue();
-			if(number>=1 && number<=9 && i>=0 && i<=8 && j>=0 && j<=8){
-				board[i][j]=number;
-				
-			}else{
-				throw new IllegalArgumentException("You need to insert a number between 1-9");
+		//if(a instanceof Integer){
+			//int number= ((Integer) a).intValue();
+			if(a>=1 && a<=9 && i>=0 && i<=8 && j>=0 && j<=8){
+				board[i][j]=a;
 			}
+				
+			//}else{
+				//throw new IllegalArgumentException("You need to insert a number between 1-9");
+			//}
 			
 			
-		}else{
-			throw new IllegalArgumentException("You need to insert a number.");
+		//}else{
+			//throw new IllegalArgumentException("You need to insert a number.");
 			
 			
-		}
+		//}
 	}
 	/**
 	 * Returns the number at position i,j in board.
